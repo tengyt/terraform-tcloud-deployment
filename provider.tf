@@ -17,7 +17,7 @@ terraform {
     organization = "FusionIT"
 
     workspaces {
-      name = "gh-action-demo-eva"
+      name = "git-action-tengy"
     }
   }
 }
