@@ -1,2 +1,2 @@
 environment = "dev"
-project     = "terraform-cloud"
+project     = "terraform-tcloud-deployment"
