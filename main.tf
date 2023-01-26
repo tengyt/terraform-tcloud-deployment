@@ -10,9 +10,6 @@ name = var.name_input
   }
 }
 
-
-
-
 resource "aws_security_group" "Hannah_security" {
   name        = "Hannah_security"
   description = "security group using terraform"
