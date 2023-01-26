@@ -1,20 +1,21 @@
+module "tomcat" {
+source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+  name = var.name_input
 
+  ami                    = var.my_ami
+  instance_type          = "t2.micro"
+  key_name               = var.key
 
-
-
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
 
 resource "aws_security_group" "Hannah_security" {
   name        = "Hannah_security"
   description = "security group using terraform"
-
-  ingress {
-    description      = "HTTPS"
-    from_port        = 443
-    to_port          = 443
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
 
 ingress {
     description      = "SSH"
@@ -25,15 +26,7 @@ ingress {
     ipv6_cidr_blocks = ["::/0"]
   }
 
-  ingress {
-    description      = "HTTP"
-    from_port        = 80
-    to_port          = 80
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
+  
   egress {
     from_port        = 0
     to_port          = 0
